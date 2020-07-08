@@ -10,16 +10,19 @@ function Calculator() {
 		(this.opAfterEquals = false),
 		(this.isNew = true); ///Expecting a new number
 	showInDisplay(this.display);
+	showInLog(this.display);
 }
 
 //Helpers
 function getDisplay() {
 	return Calc.isNegative ? "-" + Calc.display : Calc.display;
 }
+
 // Number input handler
 function handleNumbers(val) {
 	Calc.opAfterEquals = false;
 	if (Calc.display.length > 13) {
+		showInLog("Number too large to display")
 		return;
 	}
 	if (Calc.isNew) {
@@ -37,17 +40,19 @@ function handleOps(val) {
 		Calc.applyOp = val;
 		Calc.isNew = true;
 		Calc.opAfterEquals = false;
+		showInLog(String(Calc.acx),"Ans:");
 		return;
 	}
 	if (Calc.isNew) {
-		console.log("Unexpected Input");
+		showInLog("Unexpected Input");
 		return;
 	}
 	Calc.dcx = Number(getDisplay());
 	Calc.acx = evaluate(Calc.acx, Calc.dcx, Calc.applyOp);
 	Calc.applyOp = val;
 	Calc.isNew = true;
-	showInDisplay(String(Calc.acx));
+	showInLog(String(Calc.acx),"Ans:");
+	//showInDisplay(String(Calc.acx));
 }
 function handleEqual() {
 	Calc.opAfterEquals = true;
@@ -56,19 +61,16 @@ function handleEqual() {
 		Calc.acx = evaluate(Calc.acx, Calc.dcx, Calc.applyOp);
 		Calc.applyOp = "=";
 		Calc.isNew = true;
+		showInLog(String(Calc.acx),"Ans:");
 		showInDisplay(String(Calc.acx));
 	} else {
 		Calc.dcx = Calc.acx;
 		Calc.acx = evaluate(Calc.acx, Calc.dcx, Calc.applyOp);
 		Calc.applyOp = "=";
 		Calc.isNew = true;
+		showInLog(String(Calc.acx),"Ans:");
 		showInDisplay(String(Calc.acx));
 	}
-}
-//Helper functions
-function showInDisplay(display = getDisplay()) {
-	document.getElementById("calcDisplay").textContent =
-		display.length > 13 ? display.slice(0, 13) : display;
 }
 
 function evaluate(a, b, op) {
@@ -80,12 +82,21 @@ function evaluate(a, b, op) {
 		case "*":
 			return a * b;
 		case "/":
+			if(b==0){alert("can't divide by zero");}
 			return b == 0 ? a : a / b;
 		case "=":
 			return b;
 		default:
 			return a;
 	}
+}
+//Helper functions
+function showInDisplay(display = getDisplay()) {
+	document.getElementById("calcDisplay").textContent =
+		display.length > 13 ? display.slice(0, 13) : display;
+}
+function showInLog(display, label = "") {
+	document.getElementById("calcLog").textContent = label +" "+ display;
 }
 
 //Add Eventlisteners for all buttons in keypad
