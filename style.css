@@ -1,0 +1,154 @@
+/*
+Color palette
+F0F0E9
+75AD88
+75645F
+7B918D
+122237
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	/* max-height: 100%; */
+	min-height: 100%;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "Inconsolata", monospace;
+	background: rgb(4, 4, 4);
+	background: linear-gradient(
+		0deg,
+		rgba(4, 4, 4, 1) 0%,
+		rgba(18, 34, 55, 1) 100%
+	);
+}
+.container {
+	width: 400px;
+	height: 500px;
+	margin: 50px auto;
+	padding-top: 10px;
+	background-color: #75645f;
+	border: 0;
+	border-radius: 14px;
+	box-shadow: inset 0 0 0.8em 0.2em #122237;
+}
+
+.display {
+	min-width: 350px;
+	margin: 20px 20px;
+	height: 120px;
+	padding: 5px 5px;
+	border-radius: 8px;
+	background-color: #9bb1ad;
+	box-shadow: 0 0.4em 0.8em 0.1em #122237;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.keypad {
+	min-width: 350px;
+	margin: 20px 20px;
+	height: 300px;
+	padding-top: 10px;
+	border-radius: 8px;
+	background-color: #7b918d;
+	box-shadow: 0 0.4em 0.8em 0.1em #122237;
+}
+#calcDisplay {
+	margin: 10px;
+	font-size: 2.8rem;
+	font-weight: 200;
+}
+.button-group {
+	background-color: #75645f;
+	border: 0;
+	border-radius: 7px;
+	padding: 10px 8px;
+	margin: 10px 8px;
+	box-shadow: inset 0 0 0.8em 0.2em #122237;
+}
+
+#others {
+	height: 40px;
+	display: flex;
+	justify-content: space-evenly;
+}
+.wrapper {
+	display: flex;
+	flex-direction: row;
+}
+#calcNumpad {
+	max-width: 240px;
+	height: 180px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+#calcOps {
+	max-width: 50px;
+	height: 180px;
+}
+
+.opKey {
+	width: 95%;
+	margin-top: 6px;
+	height: 21%;
+}
+.numkey,
+.signkey,
+.dotkey {
+	width: 30%;
+	height: 21%;
+	margin-top: 6px;
+}
+
+.signkey,
+.opKey,
+#calcEqual {
+	background-color: #a5ad58;
+}
+.signkey:hover,
+.opKey:hover,
+#calcEqual:hover,
+.signkey:focus,
+.opkey:focus,
+#calcEqual:focus {
+    background-color: #c5cd58;
+    border: 1px groove #75ad88;
+}
+
+:focus {
+	outline: none;
+}
+
+#clearDisplay,
+#backButton {
+	min-width: 33%;
+}
+#calcEqual {
+	min-width: 20%;
+}
+button {
+	font-family: "Inconsolata", monospace;
+	background-color: #75ad88;
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 1.1rem;
+	font-weight: 500;
+	border: 0;
+	box-shadow: 0 0.2em 0.7em 0.1em #122237;
+}
+button:focus,
+button:hover {
+	background-color: #95cda8;
+	border: 1px groove #a5ad58;
+	box-shadow: 0 0.5em 0.7em 0.1em #122237;
+}
